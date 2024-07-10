@@ -32,10 +32,10 @@
     },
     "require": {
         "php": ">=7.4",
-        "addwiki/mediawiki-datamodel": "^3.1",
-        "wikibase/data-model": "~9.2||~8.0",
+        "addwiki/mediawiki-datamodel": "dev-main",
+        "wikibase/data-model": "dev-master",
         "serialization/serialization": "~3.2||~4.0",
-        "wikibase/data-model-serialization": "^2.9.1"
+        "wikibase/data-model-serialization": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~9",
@@ -43,12 +43,20 @@
         "mediawiki/mediawiki-codesniffer": "~38.0",
         "wikibase/media-info": "dev-master#d86d961a0eb0c28e9b5d8ce600c64a9dae973533"
     },
-    "repositories":[
-        {
+    "repositories": {
+        "media-info": {
             "type": "vcs",
             "url": "https://github.com/wikimedia/mediawiki-extensions-WikibaseMediaInfo.git"
+        },
+        "mediawiki-datamodel": {
+            "type": "vcs",
+            "url": "https://github.com/makeitfly/mediawiki-datamodel.git"
+        },
+        "data-model-serialization": {
+            "type": "vcs",
+            "url": "https://github.com/makeitfly/WikibaseDataModelSerialization"
         }
-    ],
+    },
     "autoload": {
         "psr-4": {
             "Addwiki\\Wikibase\\DataModel\\": "src/",
