@@ -11,6 +11,7 @@ use Wikibase\DataModel\Entity\DispatchingEntityIdParser;
 use Wikibase\DataModel\Entity\ItemId;
 use Wikibase\DataModel\Entity\NumericPropertyId;
 use Wikibase\DataModel\Serializers\SerializerFactory;
+use Wikibase\DataModel\Services\Lookup\InMemoryDataTypeLookup;
 use Wikibase\MediaInfo\DataModel\MediaInfoId;
 use Wikibase\MediaInfo\DataModel\Serialization\MediaInfoDeserializer;
 use Wikibase\MediaInfo\DataModel\Serialization\MediaInfoSerializer;
@@ -44,7 +45,10 @@ class DataModelFactory {
 	private function newDefaultDataModelDeserializerFactory(): DeserializerFactory {
 		return new DeserializerFactory(
 			$this->dataValueDeserializer,
-			$this->newEntityIdParser()
+			$this->newEntityIdParser(),
+            new InMemoryDataTypeLookup(),
+            [],
+            [],
 		);
 	}
 
