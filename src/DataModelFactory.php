@@ -2,6 +2,7 @@
 
 namespace Addwiki\Wikibase\DataModel;
 
+use DataValues\Deserializers\DataValueDeserializer;
 use Deserializers\Deserializer;
 use Deserializers\DispatchingDeserializer;
 use Serializers\DispatchingSerializer;
@@ -44,11 +45,11 @@ class DataModelFactory {
 
 	private function newDefaultDataModelDeserializerFactory(): DeserializerFactory {
 		return new DeserializerFactory(
-			$this->dataValueDeserializer,
+			new DataValueDeserializer(),
 			$this->newEntityIdParser(),
-            new InMemoryDataTypeLookup(),
-            [],
-            [],
+			new InMemoryDataTypeLookup(),
+			[],
+			[],
 		);
 	}
 
@@ -58,8 +59,8 @@ class DataModelFactory {
 			ItemId::PATTERN => static function ( $serialization ) {
 				return new ItemId( $serialization );
 			},
-            NumericPropertyId::PATTERN => static function ( $serialization ) {
-                return new NumericPropertyId( $serialization );
+			NumericPropertyId::PATTERN => static function ( $serialization ) {
+				return new NumericPropertyId( $serialization );
 			},
 			// The MediaInfo extension
 			MediaInfoId::PATTERN => static function ( $serialization ) {
