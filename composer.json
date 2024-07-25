@@ -35,7 +35,7 @@
         "addwiki/mediawiki-datamodel": "dev-main",
         "wikibase/data-model": "dev-master#cbbdfcb13e026357f7d441b9c901f06263304e46",
         "serialization/serialization": "~3.2||~4.0",
-        "wikibase/data-model-serialization": "dev-master"
+        "wikibase/data-model-serialization": "^2.9.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "~9",
