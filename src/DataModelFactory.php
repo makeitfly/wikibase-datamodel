@@ -44,8 +44,25 @@ class DataModelFactory {
 	}
 
 	private function newDefaultDataModelDeserializerFactory(): DeserializerFactory {
+        // Create our Factory, All services should be used through this!
+        // You will need to add more or different datavalues here.
+        // In the future Wikidata / Wikibase defaults will be provided in a separate
+        // library.
+        $dataValueClasses = [
+            'unknown' => 'DataValues\UnknownValue',
+            'string' => 'DataValues\StringValue',
+            'boolean' => 'DataValues\BooleanValue',
+            'number' => 'DataValues\NumberValue',
+            'globecoordinate' => 'DataValues\Geo\Values\GlobeCoordinateValue',
+            'monolingualtext' => 'DataValues\MonolingualTextValue',
+            'multilingualtext' => 'DataValues\MultilingualTextValue',
+            'quantity' => 'DataValues\QuantityValue',
+            'time' => 'DataValues\TimeValue',
+            'wikibase-entityid' => 'Wikibase\DataModel\Entity\EntityIdValue',
+        ];
+
 		return new DeserializerFactory(
-			new DataValueDeserializer(),
+			new DataValueDeserializer( $dataValueClasses ),
 			$this->newEntityIdParser(),
 			new InMemoryDataTypeLookup(),
 			[],
